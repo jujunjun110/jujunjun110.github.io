@@ -1,0 +1,36 @@
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Crawling Cursor</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="js/k-frame.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="roomObj" src="model/office.obj"></a-asset-item>
+            <a-asset-item id="roomMtl" src="model/office.mtl"></a-asset-item>
+        </a-assets>
+        <a-entity id="room" obj-model="obj: #roomObj; mtl:#roomMtl" position="0 -2.5 0"></a-entity>
+        
+        <!-- カメラオブジェクト -->
+        <a-entity camera look-controls wasd-controls>
+            <a-entity raycaster my-ray="target: #dummy-cursor"></a-entity>
+        </a-entity>
+                
+        <!-- カーソルオブジェクト -->
+        <a-entity 
+            id="dummy-cursor" 
+            look-at="0 0 0" 
+            class="ignore-ray" 
+            geometry="primitive: ring; radius-outer:0.2; radius-inner:0.06;" 
+            material="color:lightblue; opacity: 0.7"
+        ></a-entity>
+        
+    </a-scene>
+</body>
+
+</html>

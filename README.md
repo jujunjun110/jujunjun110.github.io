@@ -1,1 +1,2 @@
-# jujunjun110.github.io
+# vr-blog
+VR室ブログでソースコードを公開するためのリポジトリです
