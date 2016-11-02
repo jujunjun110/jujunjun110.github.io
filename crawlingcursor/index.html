@@ -18,11 +18,11 @@
         <a-entity id="room" obj-model="obj: #roomObj; mtl:#roomMtl" position="0 -2.5 0"></a-entity>
         
         <!-- カメラオブジェクト -->
-        <a-entity camera look-controls wasd-controls raycaster my-ray="target: #dummy-cursor"></a-entity>
+        <a-entity camera look-controls wasd-controls raycaster my-ray="target: #crawling-cursor"></a-entity>
                 
         <!-- カーソルオブジェクト -->
         <a-cursor 
-            id="dummy-cursor" 
+            id="crawling-cursor" 
             look-at="0 0 0" 
             class="ignore-ray" 
             geometry="primitive: ring; radius-outer:0.2; radius-inner:0.06;" 
