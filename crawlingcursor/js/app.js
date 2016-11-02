@@ -15,8 +15,8 @@ AFRAME.registerComponent('my-ray', {
             if (!intersection) {return;}
 
             // look atの方向の絶対座標 = 交差地点の座標 + 法線ベクトル
-            var cursorDirection = new THREE.Vector3().addVectors(intersection.point, intersection.face.normal);
-            data.target.setAttribute("look-at", cursorDirection);
+            var lookAtTarget = new THREE.Vector3().addVectors(intersection.point, intersection.face.normal);
+            data.target.setAttribute("look-at", lookAtTarget);
 
             // cursorの座標 = 交差地点の座標 + 法線ベクトル×0.1 （少しだけ交差地点から浮かせる）
             var cursorPosition = new THREE.Vector3().addVectors(intersection.point, intersection.face.normal.multiplyScalar(0.1));
