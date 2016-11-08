@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML Shader Test</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="js/aframe-html-shader.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div id="loader">
+        <p>loading...</p>
+    </div>
+    <div id="target1" class="target">
+        <img src="img/aframe-logo.jpg" alt="A-Frame">
+        <div class="cf"><h3>A-Frame</h3><p>A-Frameは簡単にWeb VRが実現できるフレームワークです。</p></div>
+        <p class="detail">320px × 200px</p>
+    </div>
+    <div id="target2" class="target">
+        <img src="img/aframe-logo.jpg" alt="A-Frame">
+        <div class="cf"><h3>A-Frame</h3><p>A-Frameは簡単にWeb VRが実現できるフレームワークです。</p></div>
+        <p class="detail">640px × 400px</p>
+    </div>
+    <div id="target3" class="target">
+        <img src="img/aframe-logo.jpg" alt="A-Frame">
+        <div class="cf"><h3>A-Frame</h3><p>A-Frameは簡単にWeb VRが実現できるフレームワークです。</p></div>
+        <p class="detail">960px × 600px</p>
+    </div>
+    <div id="target4" class="target">
+        <img src="img/aframe-logo.jpg" alt="A-Frame">
+        <div class="cf"><h3>A-Frame</h3><p>A-Frameは簡単にWeb VRが実現できるフレームワークです。</p></div>
+        <p class="detail">1280px × 800px</p>
+    </div>
+
+    <div id="target5" class="target">
+        <img src="img/aframe-logo.jpg" alt="A-Frame">
+        <div class="cf"><h3>A-Frame</h3><p>A-Frameは簡単にWeb VRが実現できるフレームワークです。</p></div>
+        <p class="detail">1600px × 1000px</p>
+    </div>
+
+    <div id="target6" class="target">
+        <img src="img/aframe-logo.jpg" alt="A-Frame">
+        <div class="cf"><h3>A-Frame</h3><p>A-Frameは簡単にWeb VRが実現できるフレームワークです。</p></div>
+        <p class="detail">3200px × 2000px</p>
+    </div>
+
+    <a-scene>
+        <a-plane position="-18  6 0" width="16" height="10" material="shader:html;target: #target1;"></a-plane>
+        <a-plane position="  0  6 0" width="16" height="10" material="shader:html;target: #target2;"></a-plane>
+        <a-plane position=" 18  6 0" width="16" height="10" material="shader:html;target: #target3;"></a-plane>
+        <a-plane position="-18 -6 0" width="16" height="10" material="shader:html;target: #target4;"></a-plane>
+        <a-plane position="  0 -6 0" width="16" height="10" material="shader:html;target: #target5;"></a-plane>
+        <a-plane position=" 18 -6 0" width="16" height="10" material="shader:html;target: #target6;"></a-plane>
+
+        <a-sky src="img/bg.jpg" rotation="0 45 0"></a-sky>
+        <a-entity camera wasd-controls look-controls position="0 0 20"></a-entity>
+    </a-scene>
+</body>
+<script>
+
+    var scene = document.querySelector('a-scene');
+    var run = function () {
+        document.getElementById("loader").classList.add("hidden");
+    }
+
+    if (scene.hasLoaded) {
+      run();
+    } else {
+      scene.addEventListener('loaded', run);
+    }
+
+</script>
+
+</html>
