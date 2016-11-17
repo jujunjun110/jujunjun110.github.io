@@ -1,0 +1,16 @@
+{
+  "name": "anno",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+	"build": "./node_modules/.bin/browserify js/main.js -o js/bundle.js && node_modules/.bin/minify js/bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aframe": "^0.3.2",
+    "minifier": "^0.8.0",
+    "browserify": "^13.1.0"
+  }
+}
