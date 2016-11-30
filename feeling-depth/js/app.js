@@ -41,23 +41,6 @@ AFRAME.registerComponent('my-ray', {
     }
 });
 
-AFRAME.registerComponent('mycam', {
-    schema: {},
-
-    init: function() {
-        this.el.addEventListener("raycaster-intersection", function(e) {
-
-
-            var dis = e.detail.intersections[0].distance;
-            var pos = {x: 0, y: 0, z: - dis};
-            var normal = e.detail.intersections[0].face.normal;
-            // console.log(normal);
-            document.getElementById("cursor").setAttribute("position", pos);            
-            document.getElementById("cursor").setAttribute("look-at", normal);
-        });
-    }
-});
-
 AFRAME.registerComponent('set-image', {
     schema: {
         on: {
@@ -84,9 +67,6 @@ AFRAME.registerComponent('set-image', {
         el.addEventListener(data.on, function() {
 
             setTimeout(function() {
-
-                document.getElementById("sky").emit('sky-fade');
-
                 document.getElementById("sky").setAttribute('src', data.target.src);
                 document.getElementById("sky").setAttribute("rotation", el.getAttribute("rotation"));
                 document.getElementById("cam").setAttribute("position", el.getAttribute("position"));
@@ -94,27 +74,3 @@ AFRAME.registerComponent('set-image', {
         });
     }
 });
-
-AFRAME.registerComponent('show-detail', {
-    schema: {
-        on: {
-            type: "string"
-        },
-        target: {
-            type: "selector"
-        }
-    }, 
-    init: function () {
-        var el = this.el;
-        var data = this.data;
-        el.addEventListener (data.on, function () {
-            var pos = el.getAttribute("position");
-            data.target.setAttribute("position", {x: pos.x, y: pos.y + 0.6, z: pos.z});
-            data.target.setAttribute("look-at", document.getElementById("cam").getAttribute("position"));
-        }) 
-    }
-});
-
-
-// not show warnings
-console.warn = function() { /* NOP */ };
