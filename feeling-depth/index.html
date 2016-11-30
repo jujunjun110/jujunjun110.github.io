@@ -5,8 +5,23 @@
     <title>Feeling Depth - OASIS</title>
     <script src="js/bundle.min.js"></script>
     <script src="js/app.js"></script>
+    <style>
+        #loader {
+            text-align: center;
+            background-color:#333; 
+            color:#fff; 
+            font-size: 40px; 
+            height: 100%; 
+            line-height: 100px;
+        }
+        #loader.hidden {
+            display: none;
+        }
+
+    </style>
 </head>
 <body>
+    <div id="loader">loading...</div>
     <a-scene antialias="true">
         <a-assets>
             <a-asset-item id="room-obj" src="models/oasis.obj"></a-asset-item>
@@ -39,4 +54,15 @@
         <a-sky id="sky" src="#spot1" rotation="0 -90 0" ></a-sky>
     </a-scene>
 </body>
+<script>
+    var scene = document.querySelector('a-scene');
+    var run = function () {
+        document.getElementById("loader").classList.add("hidden");
+    }
+    if (scene.hasLoaded) {
+      run();
+    } else {
+      scene.addEventListener('loaded', run);
+    }
+</script>
 </html>
