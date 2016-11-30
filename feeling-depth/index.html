@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sugoi OASIS</title>
+    <script src="js/bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <a-scene antialias="true">
+        <a-assets>
+            <a-asset-item id="room-obj" src="models/oasis6.obj"></a-asset-item>
+            <img id="spot1" src="img/spot1.jpg">
+            <img id="spot2" src="img/spot2.jpg">
+            <img id="spot3" src="img/spot3.jpg">
+            <img id="spot4" src="img/spot4.jpg">
+            <img id="spot5" src="img/spot5.jpg">
+            <img id="spot6" src="img/spot6.jpg">
+            <script id="warp-point" type="text/nunjucks">
+                <a-sphere class="link" radius="0.1" color="lightblue" opacity="0.8"></a-sphere>
+            </script>
+        </a-assets>
+
+        <a-obj-model src="#room-obj" position="-2 -1.7 0" scale="1.5 1.5 1.5" material="color: #ccc;opacity: 0;"></a-obj-model>
+
+        <a-entity template="src: #warp-point" position=" 0    0 0   " rotation="0 -90 0" set-image="on:click;target:#spot1"></a-entity>
+        <a-entity template="src: #warp-point" position="-1.65 0 -0.5" rotation="0 -95 0" set-image="on:click;target:#spot2"></a-entity>
+        <a-entity template="src: #warp-point" position="-3.2  0 0   " rotation="0 -90 0" set-image="on:click;target:#spot3"></a-entity>
+        <a-entity template="src: #warp-point" position="-3.3  0 3   " rotation="0 -92 0" set-image="on:click;target:#spot4"></a-entity>
+        <a-entity template="src: #warp-point" position="-1.75 0 3.3 " rotation="0 -93 0" set-image="on:click;target:#spot5"></a-entity>
+        <a-entity template="src: #warp-point" position=" 0    0 3.1 " rotation="0 -82 0" set-image="on:click;target:#spot6"></a-entity>
+
+        <a-entity id="cam" camera look-controls wasd-controls raycaster="object: .link" my-ray="target: #crawling-cursor" rotation="0 190 0"></a-entity>
+        <a-ring
+            cursor="fuse:true; fuseTimeout: 3000"
+            radius-inner="0.05"; 
+            radius-outer="0.15";
+            theta-start= "0";
+            theta-length= "360";
+            id="crawling-cursor" 
+            class="ignore-ray" 
+            look-at="0 0 0" 
+            material="color:#ef2d5e; opacity: 0.8">
+            <a-animation 
+                begin="link-intersected" 
+                easing="linear" 
+                attribute="theta-length" 
+                fill="backwards" 
+                from="0" 
+                to="360" 
+                dur="3000"
+                direction="reverse"
+            ></a-animation>
+            <a-animation 
+                begin="link-mouseleave" 
+                easing="ease-in" 
+                attribute="theta-length" 
+                from="0"
+                to="360" 
+                dur="1"
+            ></a-animation>
+        </a-ring>
+        <a-sky id="sky" src="#spot1" rotation="0 -90 0" ></a-sky>
+    </a-scene>
+</body>
+
+</html>
