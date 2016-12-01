@@ -1,4 +1,4 @@
-AFRAME.registerComponent('my-ray', {
+AFRAME.registerComponent('crawling-cursor', {
     dependencies: ['raycaster'],
     schema: {
         target: {
