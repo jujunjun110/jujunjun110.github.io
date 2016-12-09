@@ -4,7 +4,7 @@
     <title>Crawling Cursor</title>
     <script src="js/aframe.min.js"></script>
     <script src="js/k-frame.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/crawling-cursor.min.js"></script>
 </head>
 <body>
     <a-scene embedded>
@@ -18,12 +18,11 @@
         <a-entity id="room" obj-model="obj: #roomObj; mtl:#roomMtl" position="0 -2.5 0"></a-entity>
         
         <!-- カメラオブジェクト -->
-        <a-entity camera look-controls wasd-controls raycaster crawling-cursor="target: #cursor"></a-entity>
+        <a-entity camera look-controls wasd-controls raycaster crawling-cursor="target: #my-cursor"></a-entity>
                 
         <!-- カーソルオブジェクト -->
         <a-cursor 
-            id="cursor" 
-            class="ignore-ray" 
+            id="my-cursor" 
             look-at="0 0 0" 
             geometry="primitive: ring; radius-outer:0.2; radius-inner:0.06;" 
             material="color:lightblue; opacity: 0.7"
