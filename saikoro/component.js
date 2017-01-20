@@ -1,7 +1,4 @@
-AFRAME.registerComponent('pos-tracer', {
-    scheme: {
-        target: {type: "string"}
-    }
+AFRAME.registerComponent('sync-pos', {
     init: function() {
         this.targetEl = document.getElementById(this.data.target);
     },
