@@ -1,4 +1,7 @@
 AFRAME.registerComponent('sync-pos', {
+    scheme: {
+        target: {type:"string"}
+    },
     init: function() {
         this.targetEl = document.getElementById(this.data.target);
     },
