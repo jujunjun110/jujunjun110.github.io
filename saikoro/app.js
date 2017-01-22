@@ -1,4 +1,5 @@
 var saikoroApp = {};
+saikoroApp.sai = document.querySelector('#sai-physics').body;
 
 saikoroApp.scene = document.querySelector('#scene');
 saikoroApp.words = [
@@ -13,49 +14,50 @@ saikoroApp.words = [
 ];
 
 function main() {
-    var sai = document.querySelector('#sai-physics').body;
-    init(sai);
-    throwSai(sai);
+    init();
+    throwSai();
 }
 
-function init(obj) {
+function init() {
+	var sai = saikoroApp.sai;
     // カメラのsleepイベント発火の設定
-    obj.allowSleep = true;
-    obj.sleepSpeedLimit = 1;
-    obj.sleepTimeLimit = 1;
-    obj.world.allowSleep = true;
+    sai.allowSleep = true;
+    sai.sleepSpeedLimit = 1;
+    sai.sleepTimeLimit = 1;
+    sai.world.allowSleep = true;
 
-    // さいころが停止したら真上までカメラを移動させるイベントを登録
-    obj.addEventListener("sleep", function() {
-        moveCam(obj);
+    // サイコロが停止したら真上までカメラを移動させるイベントを登録
+    sai.addEventListener("sleep", function() {
+        moveCam(sai);
     });
 
     document.getElementById("button").addEventListener("click", throwSai);
 }
 
-function throwSai(sai) {
+function throwSai() {
+	var sai = saikoroApp.sai;
     var cam = document.getElementById("cam");
 
-    // さいころの各面にワードをセッティング
+    // サイコロの各面にワードをセッティング
     setWords();
 
     // カメラの位置の初期化
     cam.setAttribute("position", "0 10 0");
     cam.setAttribute("rotation", "-30 0 0");
 
-    // さいころが力の影響を（再び）受けるように設定しなおす
+    // サイコロが力の影響を（再び）受けるように設定しなおす
     sai.wakeUp();
 
-    // さいころを初期ポジションにセット
+    // サイコロを初期ポジションにセット
     sai.position = new CANNON.Vec3(0, 10, -10);
 
-    // さいころ全体に力を与える
+    // サイコロ全体に力を与える
     sai.velocity.set(0, 0, -4);
 
-    // さいころに回転を与える
+    // サイコロに回転を与える
     sai.applyImpulse(
         new CANNON.Vec3(Math.random() * 20, Math.random() * 20, Math.random() * 20), // 与えるベクトル
-        new CANNON.Vec3(0.5, Math.random() * 10, Math.random() * 10) // 力を与える点（さいころのローカル座標）
+        new CANNON.Vec3(0.5, Math.random() * 10, Math.random() * 10) // 力を与える点（サイコロのローカル座標）
     );
 }
 

@@ -19,8 +19,10 @@
     <div id="button">さいころをふる</div>
     <a-scene id="scene" physics="debug: false">
 
+        <!-- 物理演算用サイコロ -->
         <a-entity id="sai-physics" sync-pos="target: sai-display" dynamic-body="mass:100;linearDamping: 0.01;angularDamping: 0.0001;" geometry="primitive: box" position="0 10 -10" material="opacity:0;"></a-entity>
 
+        <!-- 表示用サイコロ -->
         <a-entity id="sai-display" geometry="primitive: box" material="opacity: 0" position="0 10 -3">
             <a-entity geometry="primitive: plane" material="shader:html; target: #target1; fps:1" position="   0  0.5    0" rotation="270   0 0"></a-entity>
             <a-entity geometry="primitive: plane" material="shader:html; target: #target2; fps:1" position="   0 -0.5    0" rotation=" 90   0 0"></a-entity>
@@ -30,6 +32,7 @@
             <a-entity geometry="primitive: plane" material="shader:html; target: #target6; fps:1" position=" 0.5    0    0" rotation="  0  90 0"></a-entity>
         </a-entity>
 
+        <!-- 床 -->
         <a-entity static-body geometry="primitive: box; width: 300; depth: 300; height: 1" position="0 0 0" material="src:floor.jpg; repeat: 20 20;"></a-entity>
         <a-camera id="cam" position="0 10 0" rotation="-30 0 0"></a-camera>
         <a-sky material="color: white"></a-sky>
