@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>ごきげんなアレ</title>
-    <script src="build.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.4.0/aframe.js"></script>
+    <script src="https://cdn.rawgit.com/niklasvh/html2canvas/83e9b85e/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.rawgit.com/mayognaise/aframe-html-shader/403af081/dist/aframe-html-shader.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/7159b5ef/dist/aframe-physics-system.min.js"></script>
     <script src="component.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,7 +23,7 @@
     <a-scene id="scene" physics="debug: false">
 
         <!-- 物理演算用サイコロ -->
-        <a-entity id="sai-physics" sync-pos="target: sai-display" dynamic-body="mass:100;linearDamping: 0.01;angularDamping: 0.0001;" geometry="primitive: box" position="0 10 -10" material="opacity:0;"></a-entity>
+        <a-entity id="sai-physics" sync-pos="target: #sai-display" dynamic-body="mass:100;linearDamping: 0.01;angularDamping: 0.0001;" geometry="primitive: box" position="0 10 -10" material="opacity:0;"></a-entity>
 
         <!-- 表示用サイコロ -->
         <a-entity id="sai-display" geometry="primitive: box" material="opacity: 0" position="0 10 -3">
@@ -35,7 +38,7 @@
         <!-- 床 -->
         <a-entity static-body geometry="primitive: box; width: 300; depth: 300; height: 1" position="0 0 0" material="src:floor.jpg; repeat: 20 20;"></a-entity>
         <a-camera id="cam" position="0 10 0" rotation="-30 0 0"></a-camera>
-        <a-sky material="color: white"></a-sky>
+        <<a-sky></a-sky> material="color: white"></a-sky>
     </a-scene>
 
 </body>

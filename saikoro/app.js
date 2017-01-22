@@ -1,7 +1,7 @@
 var saikoroApp = {};
-saikoroApp.sai = document.querySelector('#sai-physics').body;
 
 saikoroApp.scene = document.querySelector('#scene');
+saikoroApp.canThrow = true;
 saikoroApp.words = [
     "びっくりした話",
     "情けない話",
@@ -14,12 +14,13 @@ saikoroApp.words = [
 ];
 
 function main() {
+    saikoroApp.sai = document.querySelector('#sai-physics').body;
     init();
     throwSai();
 }
 
 function init() {
-	var sai = saikoroApp.sai;
+    var sai = saikoroApp.sai;
     // カメラのsleepイベント発火の設定
     sai.allowSleep = true;
     sai.sleepSpeedLimit = 1;
@@ -35,7 +36,12 @@ function init() {
 }
 
 function throwSai() {
-	var sai = saikoroApp.sai;
+    if (saikoroApp.canThrow === false) {
+        return;
+    }
+
+    saikoroApp.canThrow = false;
+    var sai = saikoroApp.sai;
     var cam = document.getElementById("cam");
 
     // サイコロの各面にワードをセッティング
@@ -113,6 +119,9 @@ function moveCam(obj) {
     cam.appendChild(rotAnim.cloneNode(true));
 
     cam.emit("saiStop");
+    setTimeout (function() {
+	    saikoroApp.canThrow = true;
+    }, animDuration); 
 }
 
 if (saikoroApp.scene.hasLoaded) {
