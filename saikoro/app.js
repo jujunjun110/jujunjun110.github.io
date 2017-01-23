@@ -37,7 +37,7 @@ function init() {
 }
 
 function throwSai() {
-    if (saikoroApp.canThrow === false) {return; }
+    if (saikoroApp.canThrow === false) {return;}
 
     saikoroApp.canThrow = false;
 
@@ -68,20 +68,12 @@ function throwSai() {
 }
 
 function setWords() {
-    // 配列の中身をランダムで並び替える
-    Array.prototype.shuffle = function() {
-        return this.map(function(a) {
-                return [a, Math.random()]
-            })
-            .sort(function(a, b) {
-                return a[1] - b[1]
-            })
-            .map(function(a) {
-                return a[0]
-            });
-    }
 
-    saikoroApp.words = saikoroApp.words.shuffle();
+    var shuffle = function() {
+        return Math.random() - 0.5;
+    };
+
+    saikoroApp.words = saikoroApp.words.sort(shuffle);
 
     // 配列の長さが6以上になるまで「フリーテーマ」で埋める
     while (saikoroApp.words.length < 6) {
@@ -119,10 +111,10 @@ function moveCam(obj) {
     cam.appendChild(rotAnim.cloneNode(true));
 
     cam.emit("saiStop");
-    
-    setTimeout (function() {
-	    saikoroApp.canThrow = true;
-    }, animDuration); 
+
+    setTimeout(function() {
+        saikoroApp.canThrow = true;
+    }, animDuration);
 }
 
 if (saikoroApp.scene.hasLoaded) {
