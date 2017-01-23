@@ -1,80 +1,68 @@
-body
-{
+body {
     position: relative;
 }
-#scene
-{
+
+#scene {
     position: absolute;
     z-index: 10;
     top: 0;
     left: 0;
 }
-#button
-{
+
+#button {
     font-weight: bold;
     line-height: 50px;
-
     position: absolute;
     z-index: 20;
     bottom: 40px;
     left: 40px;
-
     width: 200px;
     height: 50px;
     padding: 20px;
-
     cursor: pointer;
     text-align: center;
-
     border-radius: 20px;
     background-color: orange;
 }
 
-.target
-{
+.target {
     font-size: 100px;
     font-weight: bold;
-
     position: absolute;
     z-index: -1;
-
     display: -webkit-flex;
-    display:         flex;
+    display: flex;
     display: hidden;
-
     width: 1000px;
     height: 1000px;
     padding: 100px;
-
     text-align: center;
-
     -webkit-align-items: center;
-            align-items: center;
+    align-items: center;
     -webkit-justify-content: center;
-            justify-content: center;
+    justify-content: center;
 }
 
-#target1
-{
+#target1 {
     background-color: #58faf4;
 }
-#target2
-{
+
+#target2 {
     background-color: #fa58ac;
 }
-#target3
-{
+
+#target3 {
     background-color: #f7fe2e;
 }
-#target4
-{
+
+#target4 {
     background-color: #9f81f7;
 }
-#target5
-{
+
+#target5 {
     background-color: #ff8000;
 }
-#target6
-{
+
+#target6 {
     background-color: #40ff00;
 }

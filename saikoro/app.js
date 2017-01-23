@@ -21,13 +21,14 @@ function main() {
 
 function init() {
     var sai = saikoroApp.sai;
-    // カメラのsleepイベント発火の設定
+
+    // サイコロが停止イベント(sleep)を発火するようにする
     sai.allowSleep = true;
     sai.sleepSpeedLimit = 1;
     sai.sleepTimeLimit = 1;
     sai.world.allowSleep = true;
 
-    // サイコロが停止したら真上までカメラを移動させるイベントを登録
+    // サイコロの停止イベント発火時に真上までカメラを移動させる処理を登録
     sai.addEventListener("sleep", function() {
         moveCam(sai);
     });
@@ -36,11 +37,10 @@ function init() {
 }
 
 function throwSai() {
-    if (saikoroApp.canThrow === false) {
-        return;
-    }
+    if (saikoroApp.canThrow === false) {return; }
 
     saikoroApp.canThrow = false;
+
     var sai = saikoroApp.sai;
     var cam = document.getElementById("cam");
 
@@ -119,6 +119,7 @@ function moveCam(obj) {
     cam.appendChild(rotAnim.cloneNode(true));
 
     cam.emit("saiStop");
+    
     setTimeout (function() {
 	    saikoroApp.canThrow = true;
     }, animDuration); 
