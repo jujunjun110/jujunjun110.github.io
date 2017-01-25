@@ -37,7 +37,8 @@ function init() {
 }
 
 function throwSai() {
-    if (saikoroApp.canThrow === false) {return;}
+    if (saikoroApp.canThrow === false) {
+        return; }
 
     saikoroApp.canThrow = false;
 
@@ -69,11 +70,9 @@ function throwSai() {
 
 function setWords() {
 
-    var shuffle = function() {
+    saikoroApp.words = saikoroApp.words.sort(function() {
         return Math.random() - 0.5;
-    };
-
-    saikoroApp.words = saikoroApp.words.sort(shuffle);
+    });
 
     // 配列の長さが6以上になるまで「フリーテーマ」で埋める
     while (saikoroApp.words.length < 6) {

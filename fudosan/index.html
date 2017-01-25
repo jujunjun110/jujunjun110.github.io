@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Kirara</title>
+    <script src="scripts/build.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+
+<body>
+    <a-scene antialias="true">
+        <a-assets>
+            <img id="room1" src="images/room1.jpg" alt="">
+            <img id="room2" src="images/room2.jpg" alt="">
+        </a-assets>
+        <a-obj-model src="models/shelf.obj" mtl="models/shelf.mtl" position="2.6 0 1" rotation="0 5 0"></a-obj-model>
+        <a-obj-model src="models/sofa2.obj" mtl="models/sofa2.mtl" position="-1.6 0 0.9" scale="0.8 0.8 0.8" rotation="0 90 0"></a-obj-model>
+        <a-obj-model src="models/shirokane.obj" material="opacity: 0; color: blue"></a-obj-model>
+        <!-- <a-plane id="link" cursor-listener scale="2.5 4.2 1" position="-0.13 1.64 -3"></a-plane> -->
+
+        <a-sky id="sky" src="#room1" rotation="0 220 0"></a-sky>
+        <a-cursor id="cursor" my-cursor material="color:red" fuse="true" scale="10 10 10"></a-cursor>
+        <a-camera id="cam" position="0 1.7 2" rotation="0 0 0" raycaster crawling-cursor="target:#cursor"></a-camera>
+    </a-scene>
+</body>
+
+</html>
