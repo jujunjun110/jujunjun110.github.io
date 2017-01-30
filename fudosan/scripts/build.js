@@ -32,23 +32,20 @@ AFRAME.registerComponent('crawling-cursor', {
             var intersection = getNearestIntersection(e.detail.intersections);
             if (!intersection) {return;}
 
-            var global_normal = intersection.face.normal.clone();
-
             // a matrix which represents item's movement, rotation and scale on global world
             var mat = intersection.object.matrixWorld;
-
             // remove parallel movement from the matrix
             mat.setPosition(new THREE.Vector3(0, 0, 0));
 
             // change local normal into global normal
-            global_normal.applyMatrix4(mat).normalize();
+            var global_normal = intersection.face.normal.clone().applyMatrix4(mat).normalize();
 
             // look at target coordinate = intersection coordinate + global normal vector
             var lookAtTarget = new THREE.Vector3().addVectors(intersection.point, global_normal);
             data.target.object3D.lookAt(lookAtTarget);
 
             // cursor coordinate = intersection coordinate + normal vector * 0.05(hover 5cm above intersection point)
-            var cursorPosition = new THREE.Vector3().addVectors(intersection.point, intersection.face.normal.multiplyScalar(0.05));
+            var cursorPosition = new THREE.Vector3().addVectors(intersection.point, global_normal.multiplyScalar(0.05));
             data.target.setAttribute("position", cursorPosition);
 
             function getNearestIntersection(intersections) {
